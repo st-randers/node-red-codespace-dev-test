@@ -12,6 +12,16 @@ services:
       DB_HOST: db
       DB_PORT: 3306
       DB_DATABASE: demo
+      TEST_ENV: jatak
+      NY_ENV_VAR: "endnu en"
+      
+      # Miljøvariablen FLOWS fortæller Node-RED IDEet hvilket flow.json den skal åbne og gemme ændringer i ved deploy.
+      FLOWS: "/data/flows.json"
+      
+      # Bind mount fra codespace til den kørende containers /data.
+      # Gør det muligt at deploye flowkode direkte fra IDE og bruge git til at comitte ændringerne til repo.
+    volumes:
+      - "./node-red/:/data" 
       
     depends_on: 
       db:
